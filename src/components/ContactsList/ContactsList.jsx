@@ -1,8 +1,9 @@
 import React from 'react';
 import css from 'components/ContactsList/ContactsList.module.css';
+import PropTypes from 'prop-types';
 
 export function ContactsList({contacts, deleteContact}) {
-  
+  console.log(contacts)
     return (
     <ul className={css.contactsList}>
         {contacts.map(contact => {
@@ -18,4 +19,15 @@ export function ContactsList({contacts, deleteContact}) {
         })}
     </ul>
   )
+}
+
+ContactsList.propTypes = {
+    contacts: PropTypes.arrayOf(
+        PropTypes.exact({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+        })
+    ),
+    deleteContact: PropTypes.func.isRequired,
 }
